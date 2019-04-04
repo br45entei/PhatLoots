@@ -6,11 +6,19 @@ import com.codisimus.plugins.phatloots.events.ChestRespawnEvent.RespawnReason;
 import java.util.*;
 import org.bukkit.*;
 import org.bukkit.block.*;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Lightable;
+import org.bukkit.block.data.Powerable;
+import org.bukkit.block.data.Rail;
+import org.bukkit.block.data.type.Comparator;
+import org.bukkit.block.data.type.RedstoneRail;
+import org.bukkit.craftbukkit.v1_13_R2.block.impl.CraftRedstoneLamp;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Redstone;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
@@ -19,11 +27,36 @@ import org.bukkit.scheduler.BukkitRunnable;
  * @author Codisimus
  */
 public class PhatLootChest {
+	/** FIXME This is where we were last time. */
+	public static final boolean isTriggeredRedstone(Block block) {
+		BlockData data = block.getBlockData();
+		if(data instanceof Powerable) {
+			Powerable pow = (Powerable) data;
+			if(pow.isPowered()) {
+				return true;
+			}
+			if(data instanceof Lightable) {
+				Lightable light = (Lightable) pow;
+				if(light.isLit()) {
+					return true;
+				}
+			}
+			if(data instanceof org.bukkit.block.data.type.Dispenser) {
+				return ((org.bukkit.block.data.type.Dispenser) data).isTriggered();
+			}
+			
+		}
+	}
+	
+	public static final boolean isUntriggeredRedstone(Block block) {
+		
+	}
+	
     private static EnumSet<Material> untriggeredRedstone = EnumSet.of(
-        Material.REDSTONE_WIRE, Material.REDSTONE_COMPARATOR_OFF,
-        Material.REDSTONE_LAMP_OFF, Material.REDSTONE_TORCH_OFF,
-        Material.DIODE_BLOCK_OFF, Material.DISPENSER, Material.DROPPER,
-        Material.NOTE_BLOCK, Material.PISTON_BASE, Material.TNT
+        Material.REDSTONE_WIRE, Material.COMPARATOR,
+        Material.REDSTONE_LAMP, Material.REDSTONE_TORCH,
+        Material.REPEATER, Material.DISPENSER, Material.DROPPER,
+        Material.NOTE_BLOCK, Material.PISTON, Material.TNT
     );
     private static EnumSet<Material> triggeredRedstone = EnumSet.of(
         Material.REDSTONE_WIRE, Material.REDSTONE_COMPARATOR_ON,

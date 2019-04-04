@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/CitizensAPI.jar"/>
+	<classpathentry kind="lib" path="lib/MythicDrops.jar"/>
+	<classpathentry kind="lib" path="lib/MythicMobs.jar"/>
+	<classpathentry kind="lib" path="lib/RegionTools.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar" sourcepath="lib/commons-lang-2.6-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PhatLoots/lib/commons-lang-2.6-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Java/Libraries/Minecraft/worldguard-legacy-7.0.0-SNAPSHOT-dist.jar"/>
+	<classpathentry kind="lib" path="C:/Java/Libraries/Minecraft/Vault.jar"/>
+	<classpathentry kind="lib" path="C:/Java/Libraries/Minecraft/FastAsyncWorldEdit-bukkit-1.13.137.jar"/>
+	<classpathentry kind="lib" path="C:/Java/Libraries/Minecraft/spigot-1.13.2-R0.1-SNAPSHOT.jar" sourcepath="C:/Java/Libraries/Minecraft/spigot-craftbukkit-bukkit-nms-src.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
